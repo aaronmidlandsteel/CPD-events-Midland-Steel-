@@ -1,1 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Midland Steel | Engineering CPD</title>
+
+<style>
+
+:root{
+    --primary:#004289;
+    --secondary:#FFDE14;
+    --grey:#646363;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    color:#222;
+    line-height:1.6;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    background:#22468A;
+
+    box-shadow:0 6px 25px rgba(0,0,0,.15);
+}
+
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    min-height:90px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+}
+
+.logo img{
+    height:58px;
+    width:auto;
+    display:block;
+
+    transition:all 0.3s ease;
+}
+
+.logo img:hover{
+    transform:scale(1.02);
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+nav li{
+    list-style:none;
+}
+nav a{
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#FFDE14;
+}
+
+.hero{
+    min-height:100vh;
+
+    padding-top:110px;
+
+    display:flex;
+    align-items:center;
+
+    background:
+    linear-gradient(
+    rgba(0,66,137,0.78),
+    rgba(0,66,137,0.88)
+    ),
+    url("images/hero.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.hero-card{
+
+    max-width:760px;
+
+    padding:70px;
+
+    border-radius:32px;
+
+    background:rgba(255,255,255,0.10);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,0.30);
+
+    color:white;
+
+    animation:heroFade 1s ease;
+}
+
+.tag{
+
+    display:inline-block;
+
+    background:rgba(255,255,255,0.12);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    padding:10px 20px;
+
+    border-radius:50px;
+
+    margin-bottom:25px;
+
+    font-size:.9rem;
+}
+
+.hero h1{
+
+    font-size:5rem;
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+    font-weight:800;
+
+    letter-spacing:-2px;
+}
+
+.yellow-line{
+
+    width:90px;
+    height:5px;
+
+    background:var(--secondary);
+
+    border-radius:50px;
+
+    margin-bottom:30px;
+}
+
+.hero p{
+
+    font-size:1.2rem;
+
+    max-width:650px;
+
+    margin-bottom:40px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+
+    display:inline-block;
+
+    padding:16px 34px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.primary{
+
+    background:var(--secondary);
+
+    color:var(--primary);
+
+    box-shadow:
+    0 10px 30px rgba(255,222,20,0.35);
+}
+
+.primary:hover{
+    transform:translateY(-3px);
+}
+
+.secondary{
+
+    border:2px solid white;
+
+    color:white;
+}
+
+.secondary:hover{
+
+    background:white;
+
+    color:var(--primary);
+}
+
+.stats{
+
+    display:flex;
+
+    gap:50px;
+
+    margin-top:50px;
+
+    flex-wrap:wrap;
+}
+
+.stats h2{
+
+    color:var(--secondary);
+
+    font-size:2rem;
+}
+
+.section{
+    padding:110px 0;
+}
+
+.section-title{
+
+    text-align:center;
+
+    color:var(--primary);
+
+    font-size:2.8rem;
+
+    margin-bottom:15px;
+}
+
+.section-subtitle{
+
+    text-align:center;
+
+    color:var(--grey);
+
+    max-width:700px;
+
+    margin:auto auto 60px;
+}
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+}
+
+.card{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.12);
+}
+
+.card h3{
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+}
+
+.event{
+
+    background:#f8fafc;
+}
+
+.event-box{
+
+    background:white;
+
+    padding:60px;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+}
+
+.event-box h2{
+
+    color:var(--primary);
+
+    font-size:2.5rem;
+
+    margin-bottom:20px;
+}
+
+footer{
+
+    background:var(--primary);
+
+    color:white;
+
+    text-align:center;
+
+    padding:40px;
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+
+    transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.countdown-finished{
+    color:var(--primary);
+    font-size:1.4rem;
+    font-weight:700;
+}
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+}
+
+.gallery-item{
+
+    background:#eef2f6;
+
+    border:2px dashed #b8c4d0;
+
+    border-radius:20px;
+
+    aspect-ratio:4/3;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    color:var(--grey);
+
+    padding:20px;
+
+    overflow:hidden;
+}
+
+.gallery-item img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:18px;
+}
+
+.gallery-caption{
+
+    text-align:center;
+
+    color:var(--grey);
+
+    font-size:.95rem;
+
+    margin-top:10px;
+}
+
+@keyframes heroFade{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:2.4rem;
+        line-height:1.15;
+    }
+
+    .hero-card{
+        padding:35px;
+    }
+
+    nav ul{
+        display:none;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ============================================================
+     HEADER / NAVIGATION
+     Edit menu links + logo here
+============================================================ -->
+<header>
+
+<div class="container">
+
+<nav>
+
+<div class="logo">
+
+    <a href="index.html">
+
+        <img
+            src="images/Midland-Steel-Logo.jpg"
+            alt="Midland Steel Logo">
+
+    </a>
+
+</div>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#courses">Courses</a></li>
+<li><a href="#venue">Venue</a></li>
+<li><a href="#event">Engineers Day</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- ============================================================
+     HERO SECTION
+     Main banner: headline, intro text, CTA button, top stats row
+============================================================ -->
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-card">
+
+<h1>
+Engineering Knowledge.<br>
+Built For Progress.
+</h1>
+
+
+<div class="yellow-line"></div>
+
+<p>
+Midland Steel delivers industry-leading CPD programmes, technical seminars and learning events designed for engineers, architects, designers and construction professionals throughout Ireland.
+</p>
+
+<div class="buttons">
+
+<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=FfXJw8H4iEitf-a0COTukxsS6gog5DREjpSM04Af4AZUNTdBMk40QVFFNVRMQlpCN1VBWjQ1QUE5My4u"
+   target="_blank"
+   class="btn primary">
+Reserve Your Place – Engineers Day 2026
+</a>
+
+</div>
+
+<div class="stats">
+
+<div>
+<h2>20+</h2>
+<p>Technical Topics</p>
+</div>
+
+<div>
+<h2>100+</h2>
+<p>Industry Professionals</p>
+</div>
+
+<div>
+<h2>RTP</h2>
+<p>Engineers Ireland Accredited</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ============================================================
+     ABOUT MIDLAND STEEL SECTION
+     Company background/description text
+============================================================ -->
+<section id="about" class="section reveal">
+    <div class="container">
+        <h2 class="section-title">
+            About Midland Steel
+        </h2>
+        <p class="section-subtitle">
+            Innovation • Quality • Engineering Excellence
+        </p>
+        <div class="event-box">
+            <p style="margin-bottom:25px;text-align:left;">
+                Midland Steel is the leading steel reinforcement company specialising in innovative rebar solutions and advanced manufacturing techniques for the construction industry.
+            </p>
+            <p style="margin-bottom:25px;text-align:left;">
+                Committed to precision, quality and sustainability, the company delivers cutting-edge offsite manufactured reinforcement products that improve efficiency, reduce installation time and support safer construction practices.
+            </p>
+            <p style="margin-bottom:25px;text-align:left;">
+                Over the past 15 years, Midland Steel has pioneered the use of Building Information Modelling (BIM), digital design and offsite manufacturing to develop innovative reinforcement solutions for complex construction projects.
+            </p>
+            <p style="text-align:left;">
+                This expertise has enabled the company to create smarter, more efficient and cost-effective methods for the design, manufacture and installation of reinforced concrete structures.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     "WHY MIDLAND STEEL?" SECTION
+     3 feature cards: Industry Focused / Expert Speakers / Professional Growth
+============================================================ -->
+<section id="courses" class="section reveal">
+
+<div class="container">
+
+<h2 class="section-title">
+Why Midland Steel?
+</h2>
+
+<p class="section-subtitle">
+Practical, industry-led learning experiences designed to support engineering excellence and professional development.
+</p>
+
+<div class="cards">
+
+<div class="card">
+<h3>Industry Focused</h3>
+<p>
+Real engineering challenges, real projects and practical lessons from industry.
+</p>
+</div>
+
+<div class="card">
+<h3>Expert Speakers</h3>
+<p>
+Learn from experienced engineers, technical specialists and industry leaders.
+</p>
+</div>
+
+<div class="card">
+<h3>Professional Growth</h3>
+<p>
+Build knowledge, strengthen skills and meet CPD requirements.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ============================================================
+     VENUE & ACCREDITATION SECTION
+     Portlaoise SMART Facility card + Engineers Ireland RTP card
+============================================================ -->
+<section id="venue" class="section reveal">
+
+<div class="container">
+
+<h2 class="section-title">
+Venue & Accreditation
+</h2>
+
+<p class="section-subtitle">
+A working manufacturing facility, with learning that counts towards your professional development.
+</p>
+
+<div class="cards">
+
+<div class="card">
+<h3>📍 Portlaoise SMART Facility</h3>
+<p>
+Engineers Day 2026 takes place at Midland Steel's SMART offsite manufacturing facility in Portlaoise, Co. Laois — see rebar manufacturing, robotic welding and offsite production in action.
+</p>
+</div>
+
+<div class="card">
+<h3>🎓 Engineers Ireland Accredited</h3>
+<p>
+This event is accredited by Engineers Ireland as a Registered Training Provider (RTP), so your attendance counts towards your CPD requirements. 3 CPD hours awarded — certificates issued on completion.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ============================================================
+     COUNTDOWN SECTION
+     Live JS countdown timer to 23 July 2026, 10:30am
+     (timer logic is in the <script> at the bottom of the page)
+============================================================ -->
+<section id="countdown" class="section reveal">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Countdown to Engineers Day 2026
+        </h2>
+
+        <p class="section-subtitle">
+            23 July 2026
+        </p>
+
+        <div class="cards" id="countdown-cards">
+
+            <div class="card" style="text-align:center;">
+                <h3 id="days">0</h3>
+                <p>Days</p>
+            </div>
+
+            <div class="card" style="text-align:center;">
+                <h3 id="hours">0</h3>
+                <p>Hours</p>
+            </div>
+
+            <div class="card" style="text-align:center;">
+                <h3 id="minutes">0</h3>
+                <p>Minutes</p>
+            </div>
+
+            <div class="card" style="text-align:center;">
+                <h3 id="seconds">0</h3>
+                <p>Seconds</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- COUNTDOWN SECTION END -->
+
+<!-- ============================================================
+     REGISTRATION / CTA SECTION
+     "CPD Engineers Day 2026" — main registration call-to-action
+============================================================ -->
+<section id="event" class="section event reveal">
+
+<div class="container">
+
+<div class="event-box">
+
+<h2>
+CPD Engineers Day 2026
+</h2>
+
+<p>
+A focused day of engineering excellence, technical insight, innovative solutions and valuable networking opportunities.
+</p>
+
+<p style="margin-top:20px;margin-bottom:30px;">
+Places are limited. Register your interest today to receive
+event updates, speaker announcements and early access to registration.
+</p>
+
+<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=FfXJw8H4iEitf-a0COTukxsS6gog5DREjpSM04Af4AZUNTdBMk40QVFFNVRMQlpCN1VBWjQ1QUE5My4u"
+   target="_blank"
+   class="btn primary">
+Reserve Your Place 
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ============================================================
+     CONTACT SECTION
+     Aaron's contact details for enquiries
+============================================================ -->
+<section id="contact" class="section reveal">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Contact Us
+        </h2>
+
+        <p class="section-subtitle">
+            For questions or inquiries about Engineers Day 2026, registration or CPD accreditation please get in touch.
+        </p>
+
+        <div class="event-box">
+
+            <h3 style="color:#22468A; margin-bottom:10px;">
+                Aaron Holden
+            </h3>
+
+            <p style="margin-bottom:20px;">
+                Midland Steel
+            </p>
+
+            <p style="margin-bottom:15px; font-size:1.1rem;">
+                📧
+                <a href="mailto:aholden@midlandsteel.com"
+                   style="color:#22468A;text-decoration:none;font-weight:700;">
+                    aholden@midlandsteel.com
+                </a>
+            </p>
+
+            <p>
+                📅 Engineers Day 2026 – 23 July 2026
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+© 2026 Midland Steel  | Engineering CPD & Learning
+</footer>
+
+<!-- ============================================================
+     SCRIPTS
+     1. Countdown timer logic
+     2. Scroll-reveal animation logic
+============================================================ -->
+<script>
+
+const eventDate =
+new Date("July 23, 2026 10:30:00").getTime();
+
+const countdownInterval = setInterval(() => {
+
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance < 0) {
+
+        clearInterval(countdownInterval);
+
+        document.getElementById("countdown-cards").innerHTML =
+            '<div class="countdown-finished">Engineers Day has begun — thanks for joining us!</div>';
+
+        return;
+
+    }
+
+    document.getElementById("days").innerHTML =
+        Math.floor(distance / (1000*60*60*24));
+
+    document.getElementById("hours").innerHTML =
+        Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+
+    document.getElementById("minutes").innerHTML =
+        Math.floor((distance % (1000*60*60)) / (1000*60));
+
+    document.getElementById("seconds").innerHTML =
+        Math.floor((distance % (1000*60)) / 1000);
+
+},1000);
+
+const reveals =
+document.querySelectorAll('.reveal');
+
+function revealSections(){
+
+    reveals.forEach(section => {
+
+        const revealTop =
+        section.getBoundingClientRect().top;
+
+        if(revealTop < window.innerHeight - 100){
+
+            section.classList.add('active');
+
+        }
+
+    });
+
+}
+
+window.addEventListener('scroll', revealSections);
+
+revealSections();
+
+</script>
+
+</body>
+</html>
