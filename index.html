@@ -7,6 +7,20 @@
 
 <title>Midland Steel | Engineering CPD</title>
 
+<meta name="description" content="Midland Steel CPD Engineers Day 2026 — a focused day of engineering excellence, technical seminars and networking at the Portlaoise SMART offsite manufacturing facility. Engineers Ireland RTP accredited.">
+
+<meta property="og:title" content="CPD Engineers Day 2026 | Midland Steel">
+<meta property="og:description" content="A focused day of engineering excellence, technical insight and networking at Midland Steel's Portlaoise SMART facility. Engineers Ireland RTP accredited — 3 CPD hours.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/Midland-Steel-Logo.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CPD Engineers Day 2026 | Midland Steel">
+<meta name="twitter:description" content="A focused day of engineering excellence, technical insight and networking at Midland Steel's Portlaoise SMART facility. Engineers Ireland RTP accredited — 3 CPD hours.">
+<meta name="twitter:image" content="images/Midland-Steel-Logo.jpg">
+
+<link rel="icon" href="images/Midland-Steel-Logo.jpg">
+
 <style>
 
 :root{
@@ -94,6 +108,43 @@ nav a{
 
 nav a:hover{
     color:#FFDE14;
+}
+
+.nav-toggle{
+    display:none;
+
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+
+    width:32px;
+    height:32px;
+
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:0;
+}
+
+.nav-toggle span{
+    display:block;
+    width:100%;
+    height:3px;
+    background:white;
+    border-radius:3px;
+    transition:.3s;
+}
+
+.nav-toggle.open span:nth-child(1){
+    transform:translateY(8px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2){
+    opacity:0;
+}
+
+.nav-toggle.open span:nth-child(3){
+    transform:translateY(-8px) rotate(-45deg);
 }
 
 .hero{
@@ -460,8 +511,40 @@ footer{
         padding:35px;
     }
 
+    .nav-toggle{
+        display:flex;
+    }
+
     nav ul{
         display:none;
+
+        position:absolute;
+        top:90px;
+        left:0;
+        width:100%;
+
+        flex-direction:column;
+        align-items:flex-start;
+        gap:0;
+
+        background:#22468A;
+
+        box-shadow:0 12px 25px rgba(0,0,0,.15);
+    }
+
+    nav ul.open{
+        display:flex;
+    }
+
+    nav ul li{
+        width:100%;
+    }
+
+    nav ul li a{
+        display:block;
+        width:100%;
+        padding:18px 25px;
+        border-top:1px solid rgba(255,255,255,0.12);
     }
 
 }
@@ -494,7 +577,13 @@ footer{
 
 </div>
 
-<ul>
+<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<ul id="navMenu">
 <li><a href="#about">About</a></li>
 <li><a href="#courses">Courses</a></li>
 <li><a href="#venue">Venue</a></li>
@@ -533,7 +622,7 @@ Midland Steel delivers industry-leading CPD programmes, technical seminars and l
 <div class="buttons">
 
 <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=FfXJw8H4iEitf-a0COTukxsS6gog5DREjpSM04Af4AZUNTdBMk40QVFFNVRMQlpCN1VBWjQ1QUE5My4u"
-   target="_blank"
+   target="_blank" rel="noopener noreferrer"
    class="btn primary">
 Reserve Your Place – Engineers Day 2026
 </a>
@@ -747,7 +836,7 @@ event updates, speaker announcements and early access to registration.
 </p>
 
 <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=FfXJw8H4iEitf-a0COTukxsS6gog5DREjpSM04Af4AZUNTdBMk40QVFFNVRMQlpCN1VBWjQ1QUE5My4u"
-   target="_blank"
+   target="_blank" rel="noopener noreferrer"
    class="btn primary">
 Reserve Your Place 
 </a>
@@ -813,7 +902,8 @@ Reserve Your Place
 <!-- ============================================================
      SCRIPTS
      1. Countdown timer logic
-     2. Scroll-reveal animation logic
+     2. Mobile nav toggle logic
+     3. Scroll-reveal animation logic
 ============================================================ -->
 <script>
 
@@ -849,6 +939,29 @@ const countdownInterval = setInterval(() => {
         Math.floor((distance % (1000*60)) / 1000);
 
 },1000);
+
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+
+navToggle.addEventListener('click', () => {
+
+    const isOpen = navMenu.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen);
+
+});
+
+navMenu.querySelectorAll('a').forEach(link => {
+
+    link.addEventListener('click', () => {
+
+        navMenu.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', false);
+
+    });
+
+});
 
 const reveals =
 document.querySelectorAll('.reveal');
