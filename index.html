@@ -430,14 +430,14 @@ footer{
 }
 
 .gallery{
-
     display:grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(260px,1fr));
+    repeat(2,1fr);
 
-    gap:25px;
+    gap:30px;
 }
+
 
 .gallery-item{
 
@@ -445,11 +445,9 @@ footer{
 
     border:none;
 
-    box-shadow:none;
-
     border-radius:20px;
 
-    aspect-ratio:16/10;
+    aspect-ratio:16/9;
 
     display:flex;
 
@@ -512,22 +510,26 @@ footer{
     }
 
     nav ul{
-        display:none;
-
-        position:absolute;
-        top:90px;
-        left:0;
-        width:100%;
-
-        flex-direction:column;
-        align-items:flex-start;
-        gap:0;
-
-        background:#22468A;
-
-        box-shadow:0 12px 25px rgba(0,0,0,.15);
+        ...
     }
 
+    nav ul.open{
+        ...
+    }
+
+    nav ul li{
+        ...
+    }
+
+    nav ul li a{
+        ...
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+}
     nav ul.open{
         display:flex;
     }
