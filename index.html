@@ -509,21 +509,31 @@ footer{
         display:flex;
     }
 
-    nav ul{
-        ...
-    }
+  nav ul{
+    display:none;
+    position:absolute;
+    top:90px;
+    left:0;
+    width:100%;
+    background:#22468A;
+    flex-direction:column;
+    gap:0;
+}
 
-    nav ul.open{
-        ...
-    }
+nav ul.open{
+    display:flex;
+}
 
-    nav ul li{
-        ...
-    }
+nav ul li{
+    width:100%;
+}
 
-    nav ul li a{
-        ...
-    }
+nav ul li a{
+    display:block;
+    width:100%;
+    padding:18px 25px;
+    border-top:1px solid rgba(255,255,255,0.12);
+}
 
     .gallery{
         grid-template-columns:1fr;
