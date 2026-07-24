@@ -844,43 +844,46 @@ This event is accredited by Engineers Ireland as a Registered Training Provider 
 </section>
 <!-- ============================================================
      COUNTDOWN SECTION
-     Live JS countdown timer to 23 July 2026, 10:30am
-     (timer logic is in the <script> at the bottom of the page)
+     Static "see you next time" message replacing the live timer
+     now that Engineers Day 2026 has taken place. Links out to
+     LinkedIn for updates on the next CPD session.
 ============================================================ -->
 <section id="countdown" class="section reveal">
 
     <div class="container">
 
         <h2 class="section-title">
-            Countdown to Engineers Day 2026
+            Thank You For Attending
         </h2>
 
+        <div class="event-box" style="text-align:center;">
 
-<div class="event-box">
+            <h2 style="margin-bottom:20px;">
+                Thank You For Attending
+            </h2>
 
-    <h2 style="margin-bottom:20px;">
-        Thank You For Attending
-    </h2>
+            <p style="margin-bottom:20px;">
+                Thank you to everyone who attended Midland Steel Engineers Day 2026.
+                We greatly appreciate your participation and contribution to a successful event.
+            </p>
 
-    <p style="margin-bottom:20px;">
-        Thank you to everyone who attended Midland Steel Engineers Day 2026.
-        We greatly appreciate your participation and contribution to a successful event.
-    </p>
+            <p style="margin-bottom:20px;">
+                Follow Midland Steel on LinkedIn for updates on future CPD events,
+                industry insights, speaker announcements and Engineers Day 2027.
+            </p>
 
-    <p>
-        Follow Midland Steel on LinkedIn for updates on future CPD events,
-        industry insights, speaker announcements and Engineers Day 2027.
-    </p>
+            <a href="https://www.linkedin.com/company/midland-steel/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn primary">
+               Follow Us on LinkedIn
+            </a>
 
-    <p style="margin-top:20px;">
-        <a href="        https://www.linkedin.com/company/midland-steel/     Follow Us on LinkedIn
-        </a>
-    </p>
+        </div>
 
-</div>
+    </div>
 
 </section>
-    
 <!-- COUNTDOWN SECTION END -->
 
 <!-- ============================================================
@@ -973,44 +976,11 @@ event updates, speaker announcements and early access to registration.
 
 <!-- ============================================================
      SCRIPTS
-     1. Countdown timer logic
-     2. Mobile nav toggle logic
-     3. Scroll-reveal animation logic
+     1. Mobile nav toggle logic
+     2. Scroll-reveal animation logic
+     (countdown timer script removed — see countdown section above)
 ============================================================ -->
 <script>
-
-const eventDate =
-new Date("July 23, 2026 10:30:00").getTime();
-
-const countdownInterval = setInterval(() => {
-
-    const now = new Date().getTime();
-    const distance = eventDate - now;
-
-    if (distance < 0) {
-
-        clearInterval(countdownInterval);
-
-        document.getElementById("countdown-cards").innerHTML =
-            '<div class="countdown-finished">Engineers Day has begun — thanks for joining us!</div>';
-
-        return;
-
-    }
-
-    document.getElementById("days").innerHTML =
-        Math.floor(distance / (1000*60*60*24));
-
-    document.getElementById("hours").innerHTML =
-        Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-
-    document.getElementById("minutes").innerHTML =
-        Math.floor((distance % (1000*60*60)) / (1000*60));
-
-    document.getElementById("seconds").innerHTML =
-        Math.floor((distance % (1000*60)) / 1000);
-
-},1000);
 
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
